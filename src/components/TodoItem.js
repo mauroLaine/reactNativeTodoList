@@ -5,9 +5,10 @@ import {StyleSheet, Text, View} from 'react-native';
 
 export default class TodoItem extends Component {
   render() {
+      console.log("props", this.props)
     return (
       <View style={styles.container}>
-          <Text style={styles.item}>1. Go to the store</Text>
+          <Text style={styles.item}>{this.props.title}</Text>
       </View>
     );
   }
