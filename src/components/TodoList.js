@@ -7,13 +7,20 @@ import TodoItem from './TodoItem';
 export default class TodoList extends Component {
   render() {
     const thirdTask = "Bring it back"
+    const items = [
+      "1. Go to the store",
+      "2. " + "Get the milk",
+      `3. ${thirdTask}`
+    ]
     return (
       <View style={styles.container}>
         <Text style={styles.header}>Todo List</Text>
         <View style={styles.content}>
-            <TodoItem title={"1. Go to the store"}/>
-            <TodoItem title={"2. " + "Get the milk"}/>
-            <TodoItem title={`3. ${thirdTask}`}/>
+            {
+              items.map((item, index) => {
+                return <TodoItem title={item} key={index}/>
+              })
+            }
         </View>
       </View>
     );
