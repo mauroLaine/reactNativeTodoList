@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, FlatList} from 'react-native';
 import TodoItem from './TodoItem';
 
 
@@ -15,13 +15,14 @@ export default class TodoList extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.header}>Todo List</Text>
-        <View style={styles.content}>
-            {
-              items.map((item, index) => {
-                return <TodoItem title={item} key={index}/>
-              })
-            }
-        </View>
+        <FlatList
+          data={items}
+          style={styles.content}
+          renderItem = {(row) => {
+            return <TodoItem title={row.item} />
+          }}
+          keyExtractor={item => item}
+        />
       </View>
     );
   }
@@ -39,4 +40,8 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       margin: 10,
     },
+    content:{
+      flex: 1,
+      alignSelf: 'stretch'
+    }
   });
