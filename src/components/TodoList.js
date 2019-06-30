@@ -18,14 +18,24 @@ export default class TodoList extends Component {
         <View style={styles.header}>
           <Text style={styles.headerText}>Todo List</Text>
         </View>
-        <FlatList
-          data={items}
-          style={styles.content}
-          renderItem = {(row) => {
-            return <TodoItem title={row.item} />
-          }}
-          keyExtractor={item => item}
-        />
+        
+        <View style={styles.contentWrapper}>
+          <View style={styles.contentHeader}>
+            <Text>Content Header</Text>
+          </View>
+
+          <FlatList
+            data={items}
+            style={styles.content}
+            renderItem = {(row) => {
+              return <TodoItem title={row.item} />
+            }}
+            keyExtractor={item => item}/>
+            
+          <View style={styles.contentFooter}>
+            <Text>Content Footer</Text>
+          </View>
+        </View>
       </View>
     );
   }
@@ -52,5 +62,22 @@ const styles = StyleSheet.create({
     content:{
       flex: 1,
       alignSelf: 'stretch'
+    }, 
+    contentWrapper:{
+      flex: 1
+    },
+    contentHeader:{
+      height: 50,
+      borderBottomWidth: 1,
+      borderColor: '#aaa',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    contentFooter:{
+      height: 50,
+      borderBottomWidth: 1,
+      borderColor: '#aaa',
+      alignItems: 'center',
+      justifyContent: 'center'
     }
   });
