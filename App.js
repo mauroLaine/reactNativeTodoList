@@ -1,12 +1,20 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
+import {createBottomTabNavigator, createAppContainer, createStackNavigator} from 'react-navigation';
 import TodoList from './src/components/TodoList';
 import About from './src/components/About';
+import AddTodo from './src/components/AddTodo';
+
+const TodoNavigator = createStackNavigator({
+  TodoList: {screen: TodoList},
+  AddTodo: {screen: AddTodo}
+}, {
+  mode: 'modal'
+});
 
 const TabNavigator = createBottomTabNavigator({
-  Home: TodoList,
+  Home: TodoNavigator,
   Settings: About,
 }, {
     tabBarPosition: 'bottom',

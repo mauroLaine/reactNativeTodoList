@@ -1,10 +1,19 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, FlatList, StatusBar} from 'react-native';
+import {Button, Text as NBText} from 'native-base';
 import TodoItem from './TodoItem';
 
-
 export default class TodoList extends Component {
+
+  static navigationOptions = {
+    header: null
+  }
+  
+  addItem = () =>{
+    this.props.navigation.navigate('AddTodo');
+  }
+
   render() {
     const thirdTask = "Bring it back"
     const items = [
@@ -33,7 +42,9 @@ export default class TodoList extends Component {
             keyExtractor={item => item}/>
             
           <View style={styles.contentFooter}>
-            <Text>Content Footer</Text>
+            <Button onPress={this.addItem}>
+              <NBText>Add Item</NBText>
+            </Button>
           </View>
         </View>
       </View>
@@ -74,10 +85,8 @@ const styles = StyleSheet.create({
       justifyContent: 'center'
     },
     contentFooter:{
-      height: 50,
-      borderBottomWidth: 1,
-      borderColor: '#aaa',
-      alignItems: 'center',
-      justifyContent: 'center'
+      padding: 20,
+      justifyContent: 'flex-end',
+      flexDirection: 'row'
     }
   });
