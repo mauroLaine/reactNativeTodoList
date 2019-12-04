@@ -8,7 +8,11 @@ export default class AddTodo extends Component {
   }
 
   onAdd = () => {
-    console.log("Text: ", this.state.text)
+    if(this.state.text !== '') {
+      console.log("Text: ", this.state.text)
+    } else {
+      console.log("Enter some text")
+    }
   }
 
   render() {
