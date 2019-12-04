@@ -2,11 +2,24 @@ import React, {Component} from 'react';
 import {Text, View, StatusBar, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
 
 export default class AddTodo extends Component {
+
+  state = {
+    text: ''
+  }
+
+  onAdd = () => {
+    console.log("Text: ", this.state.text)
+  }
+
   render() {
     return (
       <View style={{flex: 1}}>
         <StatusBar barStyle="dark-content" />
-        <TextInput style={styles.input}/>
+        <TextInput 
+          style={styles.input}
+          onChangeText={ (text) => this.setState({ text }) }
+          value={this.state.text}
+        />
         <TouchableOpacity 
           style={styles.button}
           onPress={this.onAdd}
