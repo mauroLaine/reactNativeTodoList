@@ -15,12 +15,23 @@ export default class AddTodo extends Component {
     }
   }
 
+  setText = (text) => {
+    if(text.length === 3) {
+      text = `(${text})`
+    }
+    if(text.length === 8){
+      text = `${text}-`
+    }
+    this.setState({ text })
+  }
+
   render() {
     return (
       <View style={{flex: 1}}>
         <StatusBar barStyle="dark-content" />
         <TextInput 
           style={styles.input}
+          // onChangeText={this.setText}
           onChangeText={ (text) => this.setState({ text }) }
           value={this.state.text}
         />
