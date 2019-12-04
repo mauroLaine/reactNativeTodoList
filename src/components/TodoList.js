@@ -9,10 +9,6 @@ export default class TodoList extends Component {
   static navigationOptions = {
     header: null
   }
-  
-  addItem = () =>{
-    this.props.navigation.navigate('AddTodo');
-  }
 
   state = {
     items: [
@@ -20,6 +16,19 @@ export default class TodoList extends Component {
       "2. " + "Get the milk",
       "3. Bring it back"
     ]
+  }
+
+  addItem = () =>{
+    this.props.navigation.navigate(
+      'AddTodo', 
+      { saveItem: this.saveItem }
+      );
+  }
+
+  saveItem = () => {
+    this.setState({
+      items: [...this.state.items, newTask]
+    })
   }
 
   render() {
