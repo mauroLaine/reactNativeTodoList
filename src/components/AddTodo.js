@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Text, View, StatusBar, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
+import {Text, View, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
+import {Form, Item, Input, Button, Text as NBText } from 'native-base';
 
 export default class AddTodo extends Component {
 
@@ -27,41 +28,32 @@ export default class AddTodo extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={styles.container}>
         <StatusBar barStyle="dark-content" />
-        <TextInput 
-          style={styles.input}
-          // onChangeText={this.setText}
-          onChangeText={ (text) => this.setState({ text }) }
-          value={this.state.text}
-        />
-        <TouchableOpacity 
-          style={styles.button}
-          onPress={this.onAdd}
-        >
-          <Text style={styles.buttonText}>Add</Text>
-        </TouchableOpacity>
+        
+        <Form>
+          <Item>
+            <Input placeholder="Task" />
+          </Item>
+        </Form>
+        
+        <Button style={styles.button} onPress={this.onAdd}>
+          <NBText>Add Task</NBText>
+        </Button>
+
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  input: {
-    padding: 10,
-    borderWidth: 1,
-    borderColor: '#ccc'
+  container: {
+    flex: 1, 
+    backgroundColor: '#fff',
+    padding: 20
   },
   button: {
-    padding: 10,
-    marginTop: 10,
-    backgroundColor: '#0066cc',
-    borderRadius: 4,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  buttonText: {
-    fontSize: 20,
-    color: '#fff'
+    alignSelf: 'flex-end',
+    marginTop: 20,
   }
 })
