@@ -14,13 +14,15 @@ export default class TodoList extends Component {
     this.props.navigation.navigate('AddTodo');
   }
 
-  render() {
-    const thirdTask = "Bring it back"
-    const items = [
+  state = {
+    items: [
       "1. Go to the store",
       "2. " + "Get the milk",
-      `3. ${thirdTask}`
+      "3. Bring it back"
     ]
+  }
+
+  render() {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content"/>
@@ -34,7 +36,7 @@ export default class TodoList extends Component {
           </View>
 
           <FlatList
-            data={items}
+            data={this.state.items}
             style={styles.content}
             renderItem = {(row) => {
               return <TodoItem title={row.item} />
