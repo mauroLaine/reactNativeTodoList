@@ -11,11 +11,18 @@ export default class TodoList extends Component {
   }
 
   state = {
-    items: [
-      "1. Go to the store",
-      "2. " + "Get the milk",
-      "3. Bring it back"
-    ]
+    items: null
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      const taskFromNetwork = ["1. Go to the store", 
+        "2. " + "Get the milk", 
+        "3. Bring it back"]
+      this.setState({
+          items: taskFromNetwork
+        }) 
+    }, 2000)
   }
 
   addItem = () =>{
