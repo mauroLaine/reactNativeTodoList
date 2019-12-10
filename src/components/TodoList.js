@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, FlatList, StatusBar} from 'react-native';
+import {StyleSheet, Text, View, FlatList, StatusBar, ActivityIndicator} from 'react-native';
 import {Button, Text as NBText} from 'native-base';
 import TodoItem from './TodoItem';
 
@@ -50,7 +50,14 @@ export default class TodoList extends Component {
           <View style={styles.contentHeader}>
             <Text>Content Header</Text>
           </View>
-
+          {
+            !this.state.items && 
+            <ActivityIndicator
+              size="large"
+              color="#2288ee"
+              style={{marginTop:20}}
+            />
+          }
           <FlatList
             data={this.state.items}
             style={styles.content}
