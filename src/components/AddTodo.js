@@ -14,8 +14,9 @@ export default class AddTodo extends Component {
     } else {
       console.log("Enter some text")
     }
-    this.props.navigation.state.params.saveItem(this.state.task)
-    this.props.navigation.goBack()
+    const nav = this.props.navigation
+    nav.state.params.saveItem(this.state.task)
+    nav.goBack()
   }
 
   setText = (text) => {
