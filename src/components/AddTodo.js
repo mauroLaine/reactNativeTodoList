@@ -10,7 +10,7 @@ export default class AddTodo extends Component {
 
   onAdd = () => {
     if(this.state.text !== '') {
-      console.log("Text: ", this.state.text)
+      console.log("Text: ", this.state.task)
     } else {
       console.log("Enter some text")
     }
@@ -35,7 +35,11 @@ export default class AddTodo extends Component {
         
         <Form>
           <Item>
-            <Input placeholder="Task" />
+            <Input 
+              placeholder="Task"
+              onChange={e => this.setState({ task: e.nativeEvent.text })}
+              value={this.state.task} 
+            />
           </Item>
         </Form>
         

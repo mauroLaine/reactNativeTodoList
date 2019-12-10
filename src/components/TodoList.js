@@ -25,7 +25,7 @@ export default class TodoList extends Component {
       );
   }
 
-  saveItem = () => {
+  saveItem = (newTask) => {
     this.setState({
       items: [...this.state.items, newTask]
     })
