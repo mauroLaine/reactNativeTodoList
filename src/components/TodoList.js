@@ -15,14 +15,12 @@ export default class TodoList extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      const taskFromNetwork = ["1. Go to the store", 
-        "2. " + "Get the milk", 
-        "3. Bring it back"]
-      this.setState({
-          items: taskFromNetwork
-        }) 
-    }, 2000)
+    //Change this localhost address for the computer IP 
+    fetch("http://localhost:3000/items.json")
+    .then(response => response.json())
+    .then(items => {
+      console.log("Items", items)
+    })
   }
 
   addItem = () =>{
