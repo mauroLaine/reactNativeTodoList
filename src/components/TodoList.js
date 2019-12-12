@@ -16,10 +16,11 @@ export default class TodoList extends Component {
 
   componentDidMount() {
     //Change this localhost address for the computer IP 
-    fetch("http://localhost:3000/items.json")
+    fetch("http://192.168.11.25:3000/items.json")
     .then(response => response.json())
     .then(items => {
       console.log("Items", items)
+      this.setState({ items })
     })
   }
 
@@ -31,8 +32,13 @@ export default class TodoList extends Component {
   }
 
   saveItem = (newTask) => {
+    const task = {
+      id: new Date().getTime(),
+      task: newTask,
+      completed: false  
+    }
     this.setState({
-      items: [...this.state.items, newTask]
+      items: [...this.state.items, task]
     })
   }
 
@@ -60,9 +66,9 @@ export default class TodoList extends Component {
             data={this.state.items}
             style={styles.content}
             renderItem = {(row) => {
-              return <TodoItem title={row.item} />
+              return <TodoItem title={row.item.task} />
             }}
-            keyExtractor={item => item}/>
+            keyExtractor={item => item.id}/>
             
           <View style={styles.contentFooter}>
             <Button onPress={this.addItem}>
