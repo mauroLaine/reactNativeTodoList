@@ -5,9 +5,10 @@ import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
 export default class TodoItem extends Component {
   // 1 easy way to define a state, directly in the class itself
-  state = {
-    completed: false
-  }
+  // commented it since, it gets the data from the server
+  // state = {
+  //   completed: false
+  // }
   // 2 define the initial state define in incoming props  
   // constructor(props) {
   //   super(props)
@@ -17,7 +18,10 @@ export default class TodoItem extends Component {
   // } 
   
   toggleTodo = () => {
-    this.setState({completed: !this.state.completed})
+    this.props.updateTodo(
+      this.props.item.id,
+      !this.props.item.completed
+    )
   }
 
   render() {
@@ -28,8 +32,8 @@ export default class TodoItem extends Component {
         onPress={this.toggleTodo}
         style={styles.itemButton}>
           <Text style={[styles.item, {
-            opacity: (this.state.completed ? 0.5: 1.0),
-            textDecorationLine: (this.state.completed ? 'line-through' : 'none')
+            opacity: (item.completed ? 0.5: 1.0),
+            textDecorationLine: (item.completed ? 'line-through' : 'none')
           }]}>{item.task}</Text>
       </TouchableOpacity>
     );

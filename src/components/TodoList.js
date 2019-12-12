@@ -42,6 +42,26 @@ export default class TodoList extends Component {
     })
   }
 
+  updateTodo = (id, completed) => {
+    const headers = new Headers()
+    headers.append('Accept', 'application/json')
+    headers.append('Content-Type', 'application/json')
+
+    fetch("http://192.168.11.25:3000/items.json", {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify({
+        id, 
+        completed
+      })
+    })
+    .then(response => response.json())
+    .then(json => {
+      this.setState({ items: json })
+    })
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -66,7 +86,10 @@ export default class TodoList extends Component {
             data={this.state.items}
             style={styles.content}
             renderItem = {(row) => {
-              return <TodoItem item={row.item} />
+              return <TodoItem 
+              item={row.item}
+              updateTodo={this.updateTodo}
+              />
             }}
             keyExtractor={item => item.id}/>
             
