@@ -66,7 +66,7 @@ export default class TodoList extends Component {
             data={this.state.items}
             style={styles.content}
             renderItem = {(row) => {
-              return <TodoItem title={row.item.task} />
+              return <TodoItem item={row.item} />
             }}
             keyExtractor={item => item.id}/>
             

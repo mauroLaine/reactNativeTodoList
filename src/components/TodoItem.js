@@ -21,7 +21,8 @@ export default class TodoItem extends Component {
   }
 
   render() {
-      console.log("props", this.props)
+    console.log("props", this.props)
+    const item = this.props.item
     return (
       <TouchableOpacity 
         onPress={this.toggleTodo}
@@ -29,7 +30,7 @@ export default class TodoItem extends Component {
           <Text style={[styles.item, {
             opacity: (this.state.completed ? 0.5: 1.0),
             textDecorationLine: (this.state.completed ? 'line-through' : 'none')
-          }]}>{this.props.title}</Text>
+          }]}>{item.task}</Text>
       </TouchableOpacity>
     );
   }
