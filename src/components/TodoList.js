@@ -32,13 +32,20 @@ export default class TodoList extends Component {
   }
 
   saveItem = (newTask) => {
-    const task = {
-      id: new Date().getTime(),
-      task: newTask,
-      completed: false  
-    }
-    this.setState({
-      items: [...this.state.items, task]
+    const headers = new Headers()
+    headers.append('Accept', 'application/json')
+    headers.append('Content-Type', 'application/json')
+
+    fetch("http://192.168.11.25:3000/items.json", {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        task: newTask
+      })
+    })
+    .then(response => response.json())
+    .then(json => {
+      this.setState({ items: json })
     })
   }
 
@@ -59,7 +66,6 @@ export default class TodoList extends Component {
     .then(json => {
       this.setState({ items: json })
     })
-
   }
 
   render() {
