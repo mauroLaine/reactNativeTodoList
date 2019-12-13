@@ -1,13 +1,14 @@
 
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, Image, StyleSheet} from 'react-native';
+import AboutImage from '../images/star.png';
 
 export default class About extends Component {
 
   static navigationOptions = {
     header: null,
     tabBarIcon: ({tintColor }) => (
-      <Image style={[styles.icon, {tintColor}]} source={CheckImage}/>
+      <Image style={[styles.icon, {tintColor}]} source={AboutImage}/>
     ),
     tabBarLabel: 'About'
   }
@@ -24,3 +25,10 @@ export default class About extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  icon: {
+    height: 24,
+    resizeMode: 'contain'
+  }
+  });
