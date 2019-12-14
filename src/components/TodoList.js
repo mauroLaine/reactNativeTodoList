@@ -1,19 +1,10 @@
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, FlatList, StatusBar, ActivityIndicator, Image} from 'react-native';
+import {StyleSheet, Text, View, FlatList, StatusBar, ActivityIndicator} from 'react-native';
 import {Button, Text as NBText} from 'native-base';
 import TodoItem from './TodoItem';
-import CheckImage from '../images/check.png';
 
 export default class TodoList extends Component {
-
-  static navigationOptions = {
-    header: null,
-    tabBarIcon: ({tintColor }) => (
-      <Image style={[styles.icon, {tintColor}]} source={CheckImage}/>
-    ),
-    tabBarLabel: 'List'
-  }
 
   state = {
     items: null
@@ -151,9 +142,5 @@ const styles = StyleSheet.create({
       padding: 20,
       justifyContent: 'flex-end',
       flexDirection: 'row'
-    },
-    icon: {
-      height: 24,
-      resizeMode: 'contain'
     }
   });

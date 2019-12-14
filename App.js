@@ -1,10 +1,12 @@
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View, Image} from 'react-native';
 import {createBottomTabNavigator, createAppContainer, createStackNavigator} from 'react-navigation';
 import TodoList from './src/components/TodoList';
 import About from './src/components/About';
 import AddTodo from './src/components/AddTodo';
+import AboutImage from './src/images/star.png';
+import CheckImage from './src/images/check.png';
 
 const TodoNavigator = createStackNavigator({
   TodoList: {screen: TodoList},
@@ -14,8 +16,19 @@ const TodoNavigator = createStackNavigator({
 });
 
 const TabNavigator = createBottomTabNavigator({
-  Home: TodoNavigator,
-  Settings: About,
+  Home: {screen: TodoNavigator,
+    navigationOptions: () => ({
+      tabBarIcon: ({tintColor}) => (
+        <Image style={[styles.icon, {tintColor}]} source={CheckImage}/>
+      )
+  }) },
+  Settings: {screen: About,
+    navigationOptions: () => ({
+      tabBarIcon: ({tintColor}) => (
+        <Image style={[styles.icon, {tintColor}]} source={AboutImage}/>
+      )
+  })
+  },
 }, {
     tabBarPosition: 'bottom',
     tabBarOptions: {
@@ -32,3 +45,10 @@ export default class App extends Component{
     );
   }
 }
+
+const styles = StyleSheet.create({
+  icon: {
+    height: 24,
+    resizeMode: 'contain'
+  }
+  });
