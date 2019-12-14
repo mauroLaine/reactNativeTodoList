@@ -1,6 +1,6 @@
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Image} from 'react-native';
 import {createBottomTabNavigator, createAppContainer, createStackNavigator} from 'react-navigation';
 import TodoList from './src/components/TodoList';
 import About from './src/components/About';
